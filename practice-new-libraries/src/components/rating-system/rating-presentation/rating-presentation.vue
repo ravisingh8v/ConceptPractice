@@ -5,9 +5,15 @@
         <span
           class="fa-star"
           @click="rate(star)"
-          :class="currentRating >= star ? ' fa-solid fa-star' : 'fa-regular'"
+          :class="
+            isFloat == star - 0.5
+              ? 'fa-solid fa-star-half-stroke'
+              : '' || currentRating >= star
+              ? ' fa-solid '
+              : 'fa-regular'
+          "
         ></span>
-        <!-- :class="getDynamicCLass(star)" -->
+        <!-- :class="currentRating >= star ? ' fa-solid fa-star' : 'fa-regular'" -->
         <!-- && currentRating == star
               ? 'fa-solid fa-star-half-stroke'
               : 'fa-regular' -->
@@ -17,30 +23,34 @@
   </div>
 </template>
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, computed } from "vue";
 const stars = 5;
 const currentRating = ref();
 
-// currentRating.value = 3.5;
+currentRating.value = 3.5;
 function rate(star: number) {
-  if (star == currentRating.value) {
-    currentRating.value = currentRating.value - 1;
-  } else {
-    currentRating.value = star;
-  }
+  // if (star == currentRating.value) {
+  //   currentRating.value = currentRating.value - 1;
+  // } else {
+  currentRating.value = star;
+  // }
   console.log(star);
 }
 
-// const getDynamicCLass = (star) =>
-//   computed((): string => {
-//     if (currentRating.value > star) {
-//       return "fa-solid fa-star";
-//     }
-//     if (currentRating.value == star) {
-//       return "fa-solid fa-star-half-stroke";
-//     }
-//     return "fa-regular fa-star";
-//   });
+/**
+ * this function is to check that came value is float or not
+ * if came value is float then return that val
+ */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const isFloat = computed((): any => {
+  if (currentRating.value % 1 != 0) {
+    console.log(currentRating.value % 1 != 0);
+
+    return currentRating.value;
+  } else {
+    return false;
+  }
+});
 </script>
 <style scoped lang="scss">
 .star {

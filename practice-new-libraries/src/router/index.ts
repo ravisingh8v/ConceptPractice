@@ -5,6 +5,7 @@ const routes: Array<RouteRecordRaw> = [
   { path: '/image-cropping', name: 'image-cropping', component: () => import('../components/image-cropping/image-cropping-container/image-cropping-container.vue') },
   { path: '/chat-gpt', name: 'chat-gpt', component: () => import('../components/chat-gpt/chat-gpt-container/chat-gpt-container.vue') },
   { path: '/rating', name: 'rating', component: () => import('../components/rating-system/rating-container/rating-container.vue') },
+  { path: '/stepper', name: 'stepper', component: () => import('../components/stepper-form/stepper-form-container/stepper-form-container.vue') },
 ]
 
 const router = createRouter({

@@ -1,5 +1,6 @@
 <template>
   <chatGptPresentation />
+  <!-- {{ a }} -->
 </template>
 <script setup lang="ts">
 import chatGptPresentation from "../chat-gpt-presentation/chat-gpt-presentation.vue";
@@ -11,4 +12,6 @@ axios
   .then((res) => {
     console.log(res);
   });
+
+// const a = ++b + b++;
 </script>
